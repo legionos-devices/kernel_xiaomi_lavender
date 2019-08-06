@@ -16,7 +16,7 @@ steps:
     - git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android-9.0.0_r39 stock_32
     - git clone --depth=1 https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-5696680  --depth=1 clang
 
-- name: do_lavender_miui
+- name: do_lavender_aosp
   image: debian:latest
   environment:
     CHANNEL_ID:
@@ -26,7 +26,7 @@ steps:
   commands:
     - apt-get update
     - apt-get install -y ccache bc bash git-core gnupg build-essential zip curl make automake autogen autoconf autotools-dev libtool shtool python m4 gcc libtool zlib1g-dev dash pigz gcc-aarch64-linux-gnu flex libssl-dev
-    - bash buildscripts/drone_lavender_miui.sh
+    - bash buildscripts/drone_lavender_aosp.sh
   when:
     branch:
-      - miui-hmp-pie
+      - aosp-hmp-pie
